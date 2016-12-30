@@ -63,23 +63,23 @@ def replaceLetter(word, charA, charB)
 	print "la lettre #{charA} est remplacé par la lettre #{charB}\n resulat : #{word}\n"
 end
 
-def cutWord(text)
+def cutWord(word)
 	i = 0
 	space = " " 
-	print "#{text}\n"
+	print "#{word}\n"
 
-	while i < text.length
-		if text[i] == space 
-			text[i] = "\n"
+	while i < word.length
+		if word[i] == space 
+			word[i] = "\n"
 		end
 		i+=1
 	end
-	print "#{text}"
+	print "#{word}\n"
 end
 
 def main(word)
-	args = ARGV.map(&:dup)
-	word = word[0]
+	args = ARGV.map(&:dup) #duplication de l'argv pour pouvoir le manipuler
+	word = ARGV[0]
 	case ARGV[1]
 		when "1"
 			palindrome(word)
@@ -88,10 +88,9 @@ def main(word)
 		when "3" 
 			replaceLetter(word, args[2], args[3])
 		when "4"
-			cutWord(word)
+			cutWord(args[0])
 		else
 			print "Try again\n"
 	end
 end
-$w = ARGV;
 main(ARGV)
